@@ -76,4 +76,8 @@
     div.row:last-of-type {
         margin-bottom: 0;
     }
+
+    div.number-pad {
+        display: inline-block;
+    }
 </style>
