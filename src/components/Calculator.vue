@@ -1,13 +1,19 @@
 <template>
     <div class="calculator-body">
         <display/>
+        <keypad/>
     </div>
 </template>
 
 <script>
 import Display from "./Display";
+import Keypad from "./Keypad";
+
 export default {
-    components: {Display},
+    components: {
+        Display,
+        Keypad
+    },
     data: function () {
         return {}
     }
