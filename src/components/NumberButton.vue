@@ -26,7 +26,17 @@
         font-size: 18px;
 
         margin-right: 10px;
+
+        cursor: pointer;
     }
+
+    div.button:hover {
+        background-color: aliceblue;
+    }
+
+    div.button:active {
+         background-color: azure;
+     }
 
     div.button:last-of-type {
         margin-right: 0;
