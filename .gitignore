@@ -1,6 +1,3 @@
 node_modules
-dist/app.css
-dist/app.js
-hot
-mix-manifest.json
+dist
 .idea
