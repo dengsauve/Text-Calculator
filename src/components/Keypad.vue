@@ -1,6 +1,6 @@
 <template>
     <div class="keypad">
-        <number-pad/>
+        <number-pad v-on:number-stack="numberPressed($event)"/>
         <operators-pad/>
     </div>
 </template>
@@ -15,7 +15,13 @@
             'operators-pad': OperatorsPad,
         },
 
-        name: "Keypad"
+        name: "Keypad",
+
+        methods: {
+            numberPressed: function ($event) {
+                this.$emit('number-stack', $event);
+            }
+        }
     }
 </script>
 
