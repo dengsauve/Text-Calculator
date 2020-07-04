@@ -1,8 +1,24 @@
-# Text Calculator
- For individuals that cannot see numbers well, this calculator uses words.
+# text-calculator-restructured
 
-## Goals
+## Project setup
+```
+npm install
+```
 
-1. Create a calculator that people who cannot interpret numerical characters can use.
-2. Create an intuitive UI that anyone could pick up and use.
-3. Create an aesthetically pleasing tool.
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
