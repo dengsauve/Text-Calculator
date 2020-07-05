@@ -1,7 +1,9 @@
 <template>
     <div class="calculator-body">
         <display :message="message"/>
-        <keypad v-on:number-stack="newNumber($event)"/>
+        <keypad v-on:number-stack="newNumber($event)"
+                v-on:operator-stack="newOperator($event)"
+        />
     </div>
 </template>
 
@@ -26,6 +28,21 @@ export default {
                 this.message = '';
             }
             this.message += $event + ' ';
+        },
+        newOperator: function ($event) {
+            // Clear
+            if ($event === 'C') {
+                this.message = '';
+            }
+            // Equate
+            else if ($event === '=') {
+                // Handle equation
+                this.message += '\n' + $event + '\n';
+            }
+            // Add symbol to message stack
+            else {
+                this.message += '\n' + $event + '\n';
+            }
         }
     }
 }

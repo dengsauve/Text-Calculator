@@ -1,22 +1,8 @@
 <template>
     <div class="operators-pad">
-        <div class="row">
-            <operator-button title="+"/>
-        </div>
-        <div class="row">
-            <operator-button title="-"/>
-        </div>
-        <div class="row">
-            <operator-button title="x"/>
-        </div>
-        <div class="row">
-            <operator-button title="/"/>
-        </div>
-        <div class="row">
-            <operator-button title="="/>
-        </div>
-        <div class="row">
-            <operator-button title="C"/>
+        <div class="row" v-for="(button, idx) in buttons" :key="idx">
+            <operator-button :title="button"
+                             v-on:operator-stack="operatorPressed($event)"/>
         </div>
     </div>
 </template>
@@ -30,6 +16,19 @@
         },
 
         name: "OperatorsPad",
+
+        data: function () {
+            return {
+                buttons: [
+                    '+',
+                    '-',
+                    'x',
+                    '/',
+                    '=',
+                    'C'
+                ]
+            }
+        },
 
         methods: {
             operatorPressed: function ($event) {

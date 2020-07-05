@@ -1,7 +1,7 @@
 <template>
     <div class="keypad">
         <number-pad v-on:number-stack="numberPressed($event)"/>
-        <operators-pad/>
+        <operators-pad v-on:operator-stack="operatorPressed($event)"/>
     </div>
 </template>
 
@@ -20,6 +20,9 @@
         methods: {
             numberPressed: function ($event) {
                 this.$emit('number-stack', $event);
+            },
+            operatorPressed: function ($event) {
+                this.$emit('operator-stack', $event);
             }
         }
     }

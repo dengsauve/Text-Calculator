@@ -1,5 +1,8 @@
 <template>
-    <div class="button">{{ title }}</div>
+    <div class="button"
+         v-on:click="$emit('operator-stack', title)">
+        {{ title }}
+    </div>
 </template>
 
 <script>
