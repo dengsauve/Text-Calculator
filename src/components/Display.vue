@@ -1,12 +1,16 @@
 <template>
     <div class="calculator-display">
-        <span class="display-text">Welcome</span>
+        <span class="display-text">{{ message }}</span>
     </div>
 </template>
 
 <script>
     export default {
         name: "Display",
+
+        props: [
+            'message'
+        ]
     }
 </script>
 

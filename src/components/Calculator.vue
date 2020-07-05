@@ -1,6 +1,6 @@
 <template>
     <div class="calculator-body">
-        <display/>
+        <display :message="message"/>
         <keypad v-on:number-stack="newNumber($event)"/>
     </div>
 </template>
@@ -15,11 +15,17 @@ export default {
         Keypad
     },
     data: function () {
-        return {}
+        return {
+            message: 'Welcome'
+        }
     },
+
     methods: {
         newNumber: function ($event) {
-            console.log($event);
+            if (this.message === 'Welcome') {
+                this.message = '';
+            }
+            this.message += $event + ' ';
         }
     }
 }
