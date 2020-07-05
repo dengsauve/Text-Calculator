@@ -25,8 +25,10 @@
 
     span.display-text {
         padding: 10px;
+        height: 275px;
         display: block;
         font-family: "Andale Mono", monospace;
         font-size: 20px;
+        overflow-y: scroll;
     }
 </style>

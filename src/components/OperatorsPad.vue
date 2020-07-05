@@ -15,6 +15,9 @@
         <div class="row">
             <operator-button title="="/>
         </div>
+        <div class="row">
+            <operator-button title="C"/>
+        </div>
     </div>
 </template>
 
@@ -25,7 +28,14 @@
         components: {
             'operator-button': OperatorButton
         },
-        name: "OperatorsPad"
+
+        name: "OperatorsPad",
+
+        methods: {
+            operatorPressed: function ($event) {
+                this.$emit('operator-stack', $event);
+            }
+        }
     }
 </script>
 
