@@ -10,6 +10,8 @@ but it got me thinking about a simple text based calculator.
 
 I was surprised to find nothing like it online. So I decided to make one.
 
+The most recent builds will be here [https://dengsauve.github.io/Text-Calculator/](https://dengsauve.github.io/Text-Calculator/)
+
 If you want to view planned and completed goals, check out the [Roadmap](ROADMAP.md)
 
 ## Project setup
