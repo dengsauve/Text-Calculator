@@ -25,8 +25,17 @@
 
         data: function () {
             return {
+                /**
+                 * Text that's displayed on the calculator "screen"
+                 */
                 message: 'Welcome',
+                /**
+                 * All the numbers and operators given through input
+                 */
                 stack: [],
+                /**
+                 * All supported operators
+                 */
                 operators: [
                     '+',
                     '-',
@@ -39,6 +48,11 @@
         },
 
         methods: {
+            /**
+             * Adds a new number to the display message AND to the stack
+             *
+             * @param $event
+             */
             newNumber: function ($event) {
                 if (this.message === 'Welcome') {
                     this.message = '';
@@ -46,6 +60,11 @@
                 this.message += $event + '';
                 this.stack.push(this.parseNumber($event));
             },
+            /**
+             * Handles any operator buttons that are pushed
+             *
+             * @param $event
+             */
             newOperator: function ($event) {
                 // Clear
                 if ($event === 'C') {
@@ -55,7 +74,7 @@
                 // Equate
                 else if ($event === '=') {
                     // Handle equation
-                    let answer = this.parseMessage();
+                    let answer = this.parseStack();
                     this.stack = [answer];
                     this.message += '\n' + $event + '\n';
                     this.message += this.parseWord(answer);
@@ -66,15 +85,31 @@
                     this.stack.push($event.trim());
                 }
             },
-            parseMessage: function () {
+            /**
+             * Turns the stack into an expression string and attempts evaluation
+             *
+             * @returns {*}
+             */
+            parseStack: function () {
                 let expression = this.stack.join('');
                 console.log(expression);
 
                 return evaluate(expression);
             },
+            /**
+             * Takes a name of a number, and returns the number value.
+             *
+             * @param numberString
+             * @returns {string | number}
+             */
             parseNumber: function (numberString) {
                 return wordsToNumbers(numberString.trim());
             },
+            /**
+             * Takes a number, and returns the text name of it.
+             *
+             * @param integer
+             */
             parseWord: function (integer) {
                 return numWords(integer);
             }
