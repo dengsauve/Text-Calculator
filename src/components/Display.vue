@@ -1,6 +1,6 @@
 <template>
     <div class="calculator-display">
-        <span class="display-text">{{ message }}<span class="blinking-cursor">&marker;</span></span>
+        <span class="display-text" id="screen">{{ message }}</span>
     </div>
 </template>
 
@@ -26,17 +26,12 @@
     span.display-text {
         padding: 10px;
         height: 275px;
-        display: block;
+        display: flex;
+        flex-direction: column-reverse;
         font-family: "Andale Mono", monospace;
         font-size: 20px;
         overflow-y: scroll;
         white-space: pre;
-    }
-
-    span.blinking-cursor {
-        font-size: 30px;
-        color: #2E3D48;
-        animation: 1s blink step-end infinite;
     }
 
     @keyframes blink {
