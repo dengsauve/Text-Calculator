@@ -14,6 +14,7 @@
     import {
         evaluate
     } from 'mathjs'
+    const numWords = require('num-words');
 
 
     export default {
@@ -21,6 +22,7 @@
             Display,
             Keypad
         },
+
         data: function () {
             return {
                 message: 'Welcome',
@@ -42,7 +44,7 @@
                     this.message = '';
                 }
                 this.message += $event + '';
-                this.stack.push(this.parseNumber($event.trim()));
+                this.stack.push(this.parseNumber($event));
             },
             newOperator: function ($event) {
                 // Clear
@@ -54,8 +56,9 @@
                 else if ($event === '=') {
                     // Handle equation
                     let answer = this.parseMessage();
+                    this.stack = [answer];
                     this.message += '\n' + $event + '\n';
-                    this.message += answer;
+                    this.message += this.parseWord(answer);
                 }
                 // Add symbol to message stack
                 else {
@@ -72,6 +75,9 @@
             parseNumber: function (numberString) {
                 return wordsToNumbers(numberString.trim());
             },
+            parseWord: function (integer) {
+                return numWords(integer);
+            }
         }
     }
 </script>

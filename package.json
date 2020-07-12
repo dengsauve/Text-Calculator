@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "mathjs": "^7.0.2",
+    "num-words": "^1.2.0",
     "vue": "^2.6.11",
     "words-to-numbers": "^1.5.1"
   },
