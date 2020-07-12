@@ -11,6 +11,10 @@
     import Display from "./Display";
     import Keypad from "./Keypad";
     import wordsToNumbers from "words-to-numbers";
+    import {
+        evaluate
+    } from 'mathjs'
+
 
     export default {
         components: {
@@ -20,6 +24,7 @@
         data: function () {
             return {
                 message: 'Welcome',
+                stack: [],
                 operators: [
                     '+',
                     '-',
@@ -36,12 +41,14 @@
                 if (this.message === 'Welcome') {
                     this.message = '';
                 }
-                this.message += $event + ' ';
+                this.message += $event + '';
+                this.stack.push(this.parseNumber($event.trim()));
             },
             newOperator: function ($event) {
                 // Clear
                 if ($event === 'C') {
                     this.message = '';
+                    this.stack = [];
                 }
                 // Equate
                 else if ($event === '=') {
@@ -53,57 +60,18 @@
                 // Add symbol to message stack
                 else {
                     this.message += '\n' + $event + '\n';
+                    this.stack.push($event.trim());
                 }
             },
             parseMessage: function () {
-                let lineArray = this.message.split('\n');
-                console.log(lineArray);
+                let expression = this.stack.join('');
+                console.log(expression);
 
-                let numberOne = null;
-                let numberTwo = null;
-                let operate = false;
-                let operator = null;
-
-                // Parse the stack
-                for (let line of lineArray) {
-
-                    // Handle the operators
-                    if (this.operators.includes(line)) {
-                        console.log('operator');
-                        operate = true;
-                        operator = line;
-                        continue;
-                    }
-
-                    // Handle the numbers
-                    else {
-                        console.log('number');
-                        if (numberOne === null) {
-                            numberOne = this.parseNumber(line);
-                        } else {
-                            numberTwo = this.parseNumber(line);
-                        }
-                        console.log('numberOne', numberOne, 'numberTwo', numberTwo);
-                    }
-
-                    // Perform the operation if appropriate
-                    if (operate) {
-                        let result = this.operate(numberOne, numberTwo, operator);
-                        return Object.keys(this.numbers).find(key => this.numbers[key] === result);
-                        // operator = null;
-                        // operate = false;
-                    }
-                }
+                return evaluate(expression);
             },
             parseNumber: function (numberString) {
                 return wordsToNumbers(numberString.trim());
             },
-            operate: function (numberOne, numberTwo, operator) {
-                switch (operator) {
-                    case '+':
-                        return numberOne + numberTwo;
-                }
-            }
         }
     }
 </script>
