@@ -36,6 +36,7 @@
                         ["forty", "fifty", "sixty"],
                         ["seventy", "eighty", "ninety"],
                         ["hundred", "thousand", "million"],
+                        ["point"]
                     ]
                 }
             }
