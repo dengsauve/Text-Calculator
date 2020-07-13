@@ -1,6 +1,6 @@
 <template>
     <div class="calculator-display">
-        <span class="display-text" id="screen">{{ message }}</span>
+        <span class="display-text" id="screen">{{ message }} &marker;</span>
     </div>
 </template>
 
