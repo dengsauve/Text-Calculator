@@ -103,6 +103,9 @@
              * @returns {string | number}
              */
             parseNumber: function (numberString) {
+                if (numberString.includes('point')) {
+                    return '.'
+                }
                 return wordsToNumbers(numberString.trim());
             },
             /**
@@ -111,6 +114,11 @@
              * @param integer
              */
             parseWord: function (integer) {
+                let integerString = integer.toString();
+                if (integerString.includes('.')) {
+                    let integerArray = integerString.split('.');
+                    return numWords(integerArray[0]) + ' point ' + numWords([integerArray[1]]);
+                }
                 return numWords(integer);
             }
         }
